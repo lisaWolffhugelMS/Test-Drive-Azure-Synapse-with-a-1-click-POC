@@ -2,8 +2,11 @@
 	"name": "AzureSynapseAnalyticsTable1",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "TripFaresSynapseAnalyticsLinkedService",
-			"type": "LinkedServiceReference"
+			"referenceName": "AzureSynapseAnalytics1",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"keyVaultName": "@dataset().keyVaultName"
+			}
 		},
 		"annotations": [],
 		"type": "AzureSqlDWTable",
