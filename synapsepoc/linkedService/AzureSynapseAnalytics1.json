@@ -5,12 +5,16 @@
 			"keyVaultName": {
 				"type": "string",
 				"defaultValue": "kvlwovonatqylckqecpoc"
+			},
+			"SQLLoginUsername": {
+				"type": "string",
+				"defaultValue": "sqladminuser"
 			}
 		},
 		"annotations": [],
 		"type": "AzureSqlDW",
 		"typeProperties": {
-			"connectionString": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=lwovonatqylckqecpocws1.sql.azuresynapse.net;Initial Catalog=sqlpool1;User ID=sqladminuser",
+			"connectionString": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=lwovonatqylckqecpocws1.sql.azuresynapse.net;Initial Catalog=sqlpool1;User ID=@{linkedService().SQLLoginUsername}",
 			"password": {
 				"type": "AzureKeyVaultSecret",
 				"store": {
