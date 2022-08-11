@@ -2,11 +2,23 @@
 	"name": "azureSynapseAnalyticsTable",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzureSynapseAnalytics1",
+			"referenceName": "TripFaresSynapseAnalyticsLinkedService",
 			"type": "LinkedServiceReference",
 			"parameters": {
+				"SynapseWorkspaceName": {
+					"value": "@dataset().SynapseWorkspaceName",
+					"type": "Expression"
+				},
+				"SQLDedicatedPoolName": {
+					"value": "@dataset().SQLDedicatedPoolName",
+					"type": "Expression"
+				},
 				"keyVaultName": {
 					"value": "@dataset().keyVaultName",
+					"type": "Expression"
+				},
+				"SQLLoginUsername": {
+					"value": "@dataset().SQLLoginUsername",
 					"type": "Expression"
 				}
 			}
