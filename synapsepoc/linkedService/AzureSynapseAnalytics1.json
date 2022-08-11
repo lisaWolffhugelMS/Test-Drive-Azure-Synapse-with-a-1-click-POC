@@ -1,6 +1,12 @@
 {
 	"name": "AzureSynapseAnalytics1",
 	"properties": {
+		"parameters": {
+			"keyVaultName": {
+				"type": "string",
+				"defaultValue": "kvlwovonatqylckqecpoc"
+			}
+		},
 		"annotations": [],
 		"type": "AzureSqlDW",
 		"typeProperties": {
@@ -11,7 +17,10 @@
 					"referenceName": "keyVaultLinkedservice",
 					"type": "LinkedServiceReference",
 					"parameters": {
-						"keyVaultName": "kvlwovonatqylckqecpoc"
+						"keyVaultName": {
+							"value": "@linkedService().keyVaultName",
+							"type": "Expression"
+						}
 					}
 				},
 				"secretName": "synapseSqlLoginPassword"
