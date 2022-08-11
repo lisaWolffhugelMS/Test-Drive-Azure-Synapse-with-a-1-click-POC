@@ -515,7 +515,7 @@
 					},
 					"SQLDedicatedPoolName": {
 						"type": "string",
-						"defaultValue": "lwovonatqylckqecpocws1p1"
+						"defaultValue": "sqlpool1"
 					},
 					"SQLLoginUsername": {
 						"type": "string",
@@ -541,6 +541,7 @@
 				"[concat(variables('workspaceId'), '/datasets/faresDataSource')]",
 				"[concat(variables('workspaceId'), '/datasets/faresDataSink')]",
 				"[concat(variables('workspaceId'), '/dataflows/tripFaresDataTransformations')]",
+				"[concat(variables('workspaceId'), '/integrationRuntimes/AutoResolveIntegrationRuntime')]",
 				"[concat(variables('workspaceId'), '/datasets/azureSynapseAnalyticsSchema')]",
 				"[concat(variables('workspaceId'), '/datasets/AzureSynapseAnalyticsTripsData')]",
 				"[concat(variables('workspaceId'), '/datasets/AzureSynapseAnalyticsFaresData')]",
@@ -1149,16 +1150,20 @@
 			"properties": {
 				"parameters": {
 					"SynapseWorkspaceName": {
-						"type": "string"
+						"type": "string",
+						"defaultValue": "lwovonatqylckqecpocws1"
 					},
 					"SQLDedicatedPoolName": {
-						"type": "string"
+						"type": "string",
+						"defaultValue": "lwovonatqylckqecpocws1p1"
 					},
 					"keyVaultName": {
-						"type": "string"
+						"type": "string",
+						"defaultValue": "kvlwovonatqylckqecpoc"
 					},
 					"SQLLoginUsername": {
-						"type": "string"
+						"type": "string",
+						"defaultValue": "sqladminuser"
 					}
 				},
 				"annotations": [],
@@ -1169,13 +1174,7 @@
 						"type": "AzureKeyVaultSecret",
 						"store": {
 							"referenceName": "keyVaultLinkedservice",
-							"type": "LinkedServiceReference",
-							"parameters": {
-								"keyVaultName": {
-									"value": "@linkedService().keyVaultName",
-									"type": "Expression"
-								}
-							}
+							"type": "LinkedServiceReference"
 						},
 						"secretName": "synapseSqlLoginPassword"
 					}
@@ -1220,7 +1219,11 @@
 						"dataFlowProperties": {
 							"computeType": "General",
 							"coreCount": 8,
-							"timeToLive": 0
+							"timeToLive": 0,
+							"cleanup": true
+						},
+						"pipelineExternalComputeScaleProperties": {
+							"timeToLive": 60
 						}
 					}
 				},
