@@ -4,11 +4,11 @@
 		"parameters": {
 			"SynapseWorkspaceName": {
 				"type": "string",
-				"defaultValue": "lwovonatqylckqecpocws1"
+				"defaultValue": "lwovonatqylckqecpocws1.sql.azuresynapse.net"
 			},
 			"SQLDedicatedPoolName": {
 				"type": "string",
-				"defaultValue": "lwovonatqylckqecpocws1p1"
+				"defaultValue": "sqlpool1"
 			},
 			"keyVaultName": {
 				"type": "string",
@@ -27,7 +27,13 @@
 				"type": "AzureKeyVaultSecret",
 				"store": {
 					"referenceName": "keyVaultLinkedservice",
-					"type": "LinkedServiceReference"
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"keyVaultName": {
+							"value": "@linkedService().keyVaultName",
+							"type": "Expression"
+						}
+					}
 				},
 				"secretName": "synapseSqlLoginPassword"
 			}
