@@ -4,7 +4,7 @@
 		"parameters": {
 			"SynapseWorkspaceName": {
 				"type": "string",
-				"defaultValue": "lwovonatqylckqecpocws1.sql.azuresynapse.net"
+				"defaultValue": "lwovonatqylckqecpocws1"
 			},
 			"SQLDedicatedPoolName": {
 				"type": "string",
@@ -22,7 +22,7 @@
 		"annotations": [],
 		"type": "AzureSqlDW",
 		"typeProperties": {
-			"connectionString": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=@{linkedService().SynapseWorkspaceName};Initial Catalog=@{linkedService().SQLDedicatedPoolName};User ID=@{linkedService().SQLLoginUsername}",
+			"connectionString": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=@{linkedService().SynapseWorkspaceName}.sql.azuresynapse.net;Initial Catalog=@{linkedService().SQLDedicatedPoolName};User ID=@{linkedService().SQLLoginUsername}",
 			"password": {
 				"type": "AzureKeyVaultSecret",
 				"store": {
