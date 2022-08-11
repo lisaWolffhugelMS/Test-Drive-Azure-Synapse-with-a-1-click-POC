@@ -681,7 +681,13 @@
 			"properties": {
 				"linkedServiceName": {
 					"referenceName": "AzureSynapseAnalytics1",
-					"type": "LinkedServiceReference"
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"keyVaultName": {
+							"value": "@dataset().keyVaultName",
+							"type": "Expression"
+						}
+					}
 				},
 				"parameters": {
 					"SynapseWorkspaceName": {
@@ -1679,6 +1685,12 @@
 			"type": "Microsoft.Synapse/workspaces/linkedServices",
 			"apiVersion": "2019-06-01-preview",
 			"properties": {
+				"parameters": {
+					"keyVaultName": {
+						"type": "string",
+						"defaultValue": "kvlwovonatqylckqecpoc"
+					}
+				},
 				"annotations": [],
 				"type": "AzureSqlDW",
 				"typeProperties": {
@@ -1689,7 +1701,10 @@
 							"referenceName": "keyVaultLinkedservice",
 							"type": "LinkedServiceReference",
 							"parameters": {
-								"keyVaultName": "kvlwovonatqylckqecpoc"
+								"keyVaultName": {
+									"value": "@linkedService().keyVaultName",
+									"type": "Expression"
+								}
 							}
 						},
 						"secretName": "synapseSqlLoginPassword"
